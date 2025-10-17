@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TukTuk Riga | Ride with Style</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0f12;
+      --card: #15181d;
+      --text: #f5f5f5;
+      --muted: #9aa5b5;
+      --accent: #ff7a18;
+      --accent-secondary: #ff9a44;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(circle at top left, rgba(255, 122, 24, 0.15), transparent 50%),
+                  radial-gradient(circle at bottom right, rgba(255, 154, 68, 0.12), transparent 45%),
+                  var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 24px 8vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: rgba(13, 15, 18, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 10;
+      border-bottom: 1px solid rgba(255, 122, 24, 0.2);
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      margin-left: 32px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-secondary);
+    }
+
+    .cta-btn {
+      padding: 12px 24px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(255, 122, 24, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(255, 122, 24, 0.35);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .hero {
+      padding: 120px 8vw 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-card {
+      background: var(--card);
+      padding: 32px;
+      border-radius: 28px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      max-width: 420px;
+      width: 100%;
+      border: 1px solid rgba(255, 122, 24, 0.15);
+    }
+
+    .hero-card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      color: var(--muted);
+    }
+
+    .hero-card li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-card li span {
+      display: inline-flex;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: rgba(255, 122, 24, 0.18);
+      color: var(--accent-secondary);
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 80px 8vw;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: var(--card);
+      padding: 28px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 122, 24, 0.12);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, border 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 122, 24, 0.35);
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: rgba(255, 122, 24, 0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, rgba(255, 122, 24, 0.18), rgba(255, 122, 24, 0.05));
+      border-radius: 32px;
+      text-align: center;
+      padding: 64px 48px;
+      border: 1px solid rgba(255, 122, 24, 0.2);
+      box-shadow: 0 24px 72px rgba(0, 0, 0, 0.35);
+    }
+
+    .cta-section h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 18px;
+    }
+
+    .cta-section p {
+      color: var(--muted);
+      margin-bottom: 30px;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      background: #0b0d10;
+      padding: 32px 8vw;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 122, 24, 0.12);
+    }
+
+    footer strong {
+      color: var(--text);
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      margin-right: 24px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-secondary);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px 6vw;
+      }
+
+      nav a {
+        margin: 0 12px;
+      }
+
+      .hero {
+        padding-top: 100px;
+      }
+
+      .cta-section {
+        padding: 48px 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">TukTuk Riga</div>
+    <nav>
+      <a href="#service">Service</a>
+      <a href="#features">Why TukTuk?</a>
+      <a href="#booking">Book</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cta-btn">Book a Ride</button>
+  </header>
+
+  <main>
+    <section class="hero" id="service">
+      <div>
+        <h1>Tuk-tuk rides that reimagine Riga nights.</h1>
+        <p>Glide through the cobblestone streets of Riga in our eco-friendly tuk-tuks. We blend comfort, style, and a dash of retro fun to deliver a ride you will never forget.</p>
+        <button class="cta-btn">Schedule Your Pickup</button>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <h2>Tonight's Highlights</h2>
+          <ul>
+            <li><span>1</span> Old Town scenic loops every 15 minutes</li>
+            <li><span>2</span> Heated cabins &amp; cozy blankets</li>
+            <li><span>3</span> Drivers fluent in Latvian &amp; English</li>
+            <li><span>4</span> Private tours &amp; corporate packages</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <h2 style="text-align:center; font-size:2.4rem; margin-bottom:40px;">Why choose TukTuk Riga?</h2>
+      <div class="features">
+        <article class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Instant Bookings</h3>
+          <p>Real-time availability, door-to-door pickups, and friendly concierge support throughout your journey.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">🍃</div>
+          <h3>Eco-Friendly Fleet</h3>
+          <p>Our modern tuk-tuks are battery assisted, reducing emissions while keeping the ride whisper quiet.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">🎶</div>
+          <h3>Curated Experiences</h3>
+          <p>Select playlists, ambient lighting, and local insights tailored to your mood and destination.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">🕒</div>
+          <h3>24/7 Coverage</h3>
+          <p>From sunrise flights to midnight festivals, our drivers are ready whenever Riga is awake.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="booking">
+      <div class="cta-section">
+        <h2>Ready to ride the future of Riga transport?</h2>
+        <p>Call us, tap the app, or schedule online to secure your signature tuk-tuk experience. Group rides and private events welcome!</p>
+        <button class="cta-btn">Download the App</button>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div>
+      <strong>TukTuk Riga</strong><br>
+      +371 1234 5678<br>
+      info@tuktukriga.lv
+    </div>
+    <div class="footer-links">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">TripAdvisor</a>
+    </div>
+    <div>
+      © <span id="year"></span> TukTuk Riga. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
